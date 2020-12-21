@@ -22,7 +22,8 @@ public class IncreasingArray {
             intArray[i] = input.nextInt();
         }
         //calculate # of incremental steps required to make array ascending
-        int steps = 0, maxInt = 0;
+        long steps = 0;
+        int maxInt = 0;
 
         for (int j = 1; j < arrayLength; j++) {
             if (intArray[j] < Math.max(maxInt, intArray[j - 1])) {
