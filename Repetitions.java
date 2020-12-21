@@ -1,6 +1,4 @@
-/*
- * We burn
- */
+
 import java.util.Scanner;
 
 public class Main {
@@ -26,5 +24,3 @@ public class Main {
     System.out.print(maxStreak);
     }
 }
-//for (int i = 0; i < s.length(); i++){
-//    char c = s.charAt(i);  
