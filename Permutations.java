@@ -1,32 +1,62 @@
+import java.io.*;
+import java.util.*;
 
-import java.util.Scanner;
-import java.util.ArrayList;
+public class Solution {
+    static class InputReader {
+        BufferedReader reader;
+        StringTokenizer tokenizer;
 
-public class Permutations {
+        public InputReader(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream), 32768);
+            tokenizer = null;
+        }
+
+        String next() { // reads in the next string
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return tokenizer.nextToken();
+        }
+
+        public int nextInt() { // reads in the next int
+            return Integer.parseInt(next());
+
+        }
+
+        public long nextLong() { // reads in the next long
+            return Long.parseLong(next());
+        }
+
+        public double nextDouble() { // reads in the next double
+            return Double.parseDouble(next());
+        }
+    }
+
+    static InputReader r = new InputReader(System.in);
+    static PrintWriter pw = new PrintWriter(System.out);
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        long n = input.nextInt();
-        ArrayList<Integer> permutations = new ArrayList<>();
-        int odds = 1, evens = 2;
-        while (evens <= n) {
-            permutations.add(evens);
-            evens += 2;
-        }
-        while (odds <= n) {
-            permutations.add(odds);
-            odds += 2;
-        }
-        if (n <= 3 && n != 1) {
-            System.out.print("NO SOLUTION");
-        } else if (n == 1) {
-            System.out.print(1);
+        int in = r.nextInt();
+        int temps = 2;
+        int smallertemps = 1;
+        if (in == 1) {
+            pw.print(1);
+        } else if (in < 4) {
+            pw.print("NO SOLUTION");
         } else {
-            for (int i = 0; i < permutations.size(); i++) {
-                System.out.print(permutations.get(i));
+            while (temps <= in) {
+                pw.print(temps + " ");
+                temps += 2;
             }
-
+            while (smallertemps <= in) {
+                pw.print(smallertemps + " ");
+                smallertemps += 2;
+            }
         }
+        pw.close(); // flushes the output once printing is done
     }
 }
